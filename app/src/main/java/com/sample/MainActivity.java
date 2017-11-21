@@ -16,6 +16,7 @@
 
 package com.sample;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     int downloadIdOne;
     String URL="";
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +64,16 @@ public class MainActivity extends AppCompatActivity {
         dirPath = Utils.getRootDirPath(getApplicationContext());
 
         init();
+       progressDialog= new ProgressDialog(MainActivity.this);
         Intent intent=getIntent();
 
         if (intent!=null)
         {
+            progressDialog.setTitle("Fetching Details");
+            progressDialog.setCancelable(false);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Parsing download link");
+            progressDialog.show();
             Bundle extras=intent.getExtras();
             if (extras!=null) {
                 String link = extras.getString(Intent.EXTRA_TEXT);
@@ -78,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                             int itag = 22;
                             URL = sparseArray.get(itag).getUrl();
                             Log.d("Download URL",URL);
+                            textViewProgressOne.setText(videoMeta.getTitle()+"; 720p");
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
                             Toast.makeText(MainActivity.this,"Click on start",Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -36,8 +36,8 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="4dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginRight="4dp"
                 android:progressTint="@color/colorPrimaryDark" />
 
@@ -45,14 +45,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/progressBarOne"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textViewProgressOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:layout_weight="1"
+                    android:textStyle="italic"
+                    android:typeface="monospace"
+                    android:text="Title of the video"
 
                     android:textAlignment="center" />
 
